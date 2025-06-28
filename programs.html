@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - Tiny Feet ECD and Aftercare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #E63946;
+            --secondary: #000000;
+            --accent: #FFD700;
+            --light: #FFFFFF;
+            --gray: #F5F5F5;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #d32f2f);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 0.8s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        .logo-text {
+            color: var(--light);
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .programs-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light);
+            text-align: center;
+            padding: 8rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .programs-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .programs-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Fredoka One', cursive;
+            animation: fadeInUp 1s ease;
+        }
+
+        .programs-hero p {
+            font-size: 1.5rem;
+            margin: 0 auto 2.5rem;
+            max-width: 700px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2.8rem;
+            position: relative;
+            font-family: 'Fredoka One', cursive;
+            animation: fadeIn 1s ease;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 3px;
+        }
+
+        /* Program Cards */
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .program-card {
+            background: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            border-top: 5px solid var(--primary);
+        }
+
+        .program-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(230, 57, 70, 0.2);
+        }
+
+        .program-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: 30px;
+        }
+
+        .program-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .program-content .age-group {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .program-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .program-features li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .program-features li:last-child {
+            border-bottom: none;
+        }
+
+        .program-features li i {
+            color: var(--primary);
+            min-width: 25px;
+        }
+
+        .program-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .program-link:hover {
+            color: #c62828;
+            transform: translateX(5px);
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            background: linear-gradient(to right, var(--primary), #c62828);
+            color: var(--light);
+        }
+
+        .schedule-section .section-title {
+            color: var(--light);
+        }
+
+        .schedule-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .schedule-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 40px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .schedule-card h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table th {
+            font-weight: 600;
+        }
+
+        /* Curriculum Section */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .curriculum-item {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .curriculum-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.1);
+        }
+
+        .curriculum-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .curriculum-item h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Enrollment Section */
+        .enrollment-section {
+            background-color: var(--gray);
+        }
+
+        .enrollment-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            counter-reset: step-counter;
+        }
+
+        .step-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 40px 30px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(230, 57, 70, 0.1);
+        }
+
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .step-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: linear-gradient(to right, var(--primary), #c62828);
+            color: var(--light);
+        }
+
+        .testimonials-section .section-title {
+            color: var(--light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+        }
+
+        .testimonial-rating {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: -30px;
+            left: -20px;
+            line-height: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 80px 10%;
+            background: linear-gradient(rgba(230, 57, 70, 0.9), rgba(198, 40, 40, 0.9)), url('https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 20px;
+            margin: 0 10% 100px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.2rem;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--secondary);
+            padding: 15px 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #ffcc00;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: var(--light);
+            padding: 5rem 10% 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            color: var(--accent);
+            font-family: 'Fredoka One', cursive;
+        }
+
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px) rotate(10deg);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Animation Elements */
+        .animation-element {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatImage {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .cta-section {
+                margin: 0 5% 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .section {
+                padding: 4rem 5%;
+            }
+            
+            .programs-hero {
+                padding: 6rem 1.5rem;
+            }
+            
+            .programs-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .programs-hero p {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2.3rem;
+            }
+            
+            .cta-section {
+                margin: 0 0 60px;
+                border-radius: 0;
+                padding: 60px 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .program-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-child logo-icon"></i>
+            <h1 class="logo-text">Tiny <span>Feet</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="programs.html" class="active">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="programs-hero">
+        <div class="animation-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
+        <div class="animation-element" style="width: 80px; height: 80px; top: 70%; left: 85%;"></div>
+        
+        <div class="programs-hero-content">
+            <h1>Our Educational Programs</h1>
+            <p>Discover our nurturing environments designed for every stage of early development</p>
+        </div>
+    </section>
+
+    <!-- Early Childhood Programs -->
+    <section class="section">
+        <h2 class="section-title">Early Childhood Development</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">Our ECD programs are designed to nurture young minds through play-based learning, social interaction, and age-appropriate educational activities.</p>
+        
+        <div class="program-cards">
+            <div class="program-card">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Infant Program">
+                </div>
+                <div class="program-content">
+                    <h3>Infant Care</h3>
+                    <span class="age-group">4-18 months</span>
+                    <p>A nurturing environment for our youngest learners with individualized care and sensory-rich experiences.</p>
+                    
+                    <ul class="program-features">
+                        <li><i class="fas fa-check-circle"></i> Individualized feeding and sleeping schedules</li>
+                        <li><i class="fas fa-check-circle"></i> Sensory play and motor skill development</li>
+                        <li><i class="fas fa-check-circle"></i> Secure attachment with primary caregivers</li>
+                        <li><i class="fas fa-check-circle"></i> Daily communication with parents</li>
+                    </ul>
+                    
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1544830797-9d9640d17f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Toddler Program">
+                </div>
+                <div class="program-content">
+                    <h3>Toddler Program</h3>
+                    <span class="age-group">18-36 months</span>
+                    <p>Encouraging exploration and discovery through play-based learning and social interaction.</p>
+                    
+                    <ul class="program-features">
+                        <li><i class="fas fa-check-circle"></i> Language development and vocabulary building</li>
+                        <li><i class="fas fa-check-circle"></i> Potty training support</li>
+                        <li><i class="fas fa-check-circle"></i> Creative arts and sensory activities</li>
+                        <li><i class="fas fa-check-circle"></i> Outdoor play and physical development</li>
+                    </ul>
+                    
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1600494603989-9650cf6ddd3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Preschool Program">
+                </div>
+                <div class="program-content">
+                    <h3>Preschool</h3>
+                    <span class="age-group">3-5 years</span>
+                    <p>Preparing children for formal schooling with a balanced approach to learning and development.</p>
+                    
+                    <ul class="program-features">
+                        <li><i class="fas fa-check-circle"></i> Early literacy and numeracy skills</li>
+                        <li><i class="fas fa-check-circle"></i> STEM exploration and critical thinking</li>
+                        <li><i class="fas fa-check-circle"></i> Social-emotional development</li>
+                        <li><i class="fas fa-check-circle"></i> Creative expression through art and music</li>
+                    </ul>
+                    
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            
+            <div class="program-card">
+                <div class="program-image">
+                    <img src="https://images.unsplash.com/photo-1617590004475-0f8c5d30c0d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Grade R Program">
+                </div>
+                <div class="program-content">
+                    <h3>Grade R</h3>
+                    <span class="age-group">5-6 years</span>
+                    <p>Our comprehensive school readiness program that prepares children for Grade 1.</p>
+                    
+                    <ul class="program-features">
+                        <li><i class="fas fa-check-circle"></i> Structured learning activities</li>
+                        <li><i class="fas fa-check-circle"></i> Phonics and reading readiness</li>
+                        <li><i class="fas fa-check-circle"></i> Mathematics foundation</li>
+                        <li><i class="fas fa-check-circle"></i> Development of independence and responsibility</li>
+                    </ul>
+                    
+                    <a href="#" class="program-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Aftercare Program -->
+    <section class="section" style="background-color: var(--gray);">
+        <h2 class="section-title">Aftercare Program</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">A safe, supportive environment for school-going children with homework assistance, enrichment activities, and social time.</p>
+        
+        <div class="program-card" style="max-width: 1000px; margin: 0 auto;">
+            <div class="program-image">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Aftercare Program">
+            </div>
+            <div class="program-content">
+                <h3>After School Care</h3>
+                <span class="age-group">Grade 1-7</span>
+                <p>Our aftercare program provides a structured yet flexible environment where children can relax, complete homework, and engage in enriching activities after their school day.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px;">
+                    <div>
+                        <h4>Program Features</h4>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check-circle"></i> Dedicated homework time with assistance</li>
+                            <li><i class="fas fa-check-circle"></i> Nutritious afternoon snack</li>
+                            <li><i class="fas fa-check-circle"></i> Enrichment activities (arts, sports, STEM)</li>
+                            <li><i class="fas fa-check-circle"></i> Outdoor play and physical activities</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Benefits</h4>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check-circle"></i> Safe, supervised environment</li>
+                            <li><i class="fas fa-check-circle"></i> Social development with peers</li>
+                            <li><i class="fas fa-check-circle"></i> Consistent routine for children</li>
+                            <li><i class="fas fa-check-circle"></i> Flexible pickup until 6:00 PM</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <a href="#" class="program-link" style="display: block; text-align: center; margin-top: 30px;">Learn More About Aftercare <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Daily Schedule -->
+    <section class="section schedule-section">
+        <h2 class="section-title">Daily Schedule</h2>
+        
+        <div class="schedule-container">
+            <div class="schedule-card">
+                <h3>ECD Daily Routine</h3>
+                <table class="schedule-table">
+                    <tr>
+                        <td>6:00 AM - 8:00 AM</td>
+                        <td>Early Drop-off & Free Play</td>
+                    </tr>
+                    <tr>
+                        <td>8:00 AM - 8:30 AM</td>
+                        <td>Breakfast</td>
+                    </tr>
+                    <tr>
+                        <td>8:30 AM - 9:30 AM</td>
+                        <td>Circle Time & Morning Activities</td>
+                    </tr>
+                    <tr>
+                        <td>9:30 AM - 10:00 AM</td>
+                        <td>Morning Snack</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 AM - 11:30 AM</td>
+                        <td>Learning Centers & Outdoor Play</td>
+                    </tr>
+                    <tr>
+                        <td>11:30 AM - 12:00 PM</td>
+                        <td>Lunch</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 PM - 2:00 PM</td>
+                        <td>Nap/Rest Time</td>
+                    </tr>
+                    <tr>
+                        <td>2:00 PM - 2:30 PM</td>
+                        <td>Afternoon Snack</td>
+                    </tr>
+                    <tr>
+                        <td>2:30 PM - 4:00 PM</td>
+                        <td>Afternoon Activities & Free Play</td>
+                    </tr>
+                    <tr>
+                        <td>4:00 PM - 6:00 PM</td>
+                        <td>Late Pickup & Activities</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="schedule-card">
+                <h3>Aftercare Schedule</h3>
+                <table class="schedule-table">
+                    <tr>
+                        <td>1:00 PM - 2:00 PM</td>
+                        <td>Arrival & Lunch</td>
+                    </tr>
+                    <tr>
+                        <td>2:00 PM - 3:00 PM</td>
+                        <td>Outdoor Play & Recreation</td>
+                    </tr>
+                    <tr>
+                        <td>3:00 PM - 4:00 PM</td>
+                        <td>Homework & Study Time</td>
+                    </tr>
+                    <tr>
+                        <td>4:00 PM - 4:30 PM</td>
+                        <td>Afternoon Snack</td>
+                    </tr>
+                    <tr>
+                        <td>4:30 PM - 5:30 PM</td>
+                        <td>Enrichment Activities</td>
+                    </tr>
+                    <tr>
+                        <td>5:30 PM - 6:00 PM</td>
+                        <td>Indoor Activities & Pickup</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 20px;">
+                    <h4>Enrichment Activities Include:</h4>
+                    <ul>
+                        <li>Arts & Crafts</li>
+                        <li>Sports & Fitness</li>
+                        <li>Science Experiments</li>
+                        <li>Music & Drama</li>
+                        <li>Reading Club</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Curriculum Section -->
+    <section class="section">
+        <h2 class="section-title">Our Curriculum Approach</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">We blend the best educational approaches to create a comprehensive learning experience for every child.</p>
+        
+        <div class="curriculum-grid">
+            <div class="curriculum-item">
+                <i class="fas fa-brain curriculum-icon"></i>
+                <h3>Holistic Development</h3>
+                <p>We focus on all areas of child development - cognitive, physical, social, emotional, and creative - to nurture well-rounded individuals.</p>
+            </div>
+            
+            <div class="curriculum-item">
+                <i class="fas fa-child curriculum-icon"></i>
+                <h3>Play-Based Learning</h3>
+                <p>Children learn best through play. Our activities are designed to be engaging, fun, and developmentally appropriate.</p>
+            </div>
+            
+            <div class="curriculum-item">
+                <i class="fas fa-seedling curriculum-icon"></i>
+                <h3>Emergent Curriculum</h3>
+                <p>Our curriculum evolves based on children's interests, allowing for meaningful, child-directed learning experiences.</p>
+            </div>
+            
+            <div class="curriculum-item">
+                <i class="fas fa-book-open curriculum-icon"></i>
+                <h3>Literacy Focus</h3>
+                <p>Daily storytime, phonics activities, and a print-rich environment foster early literacy skills and a love for reading.</p>
+            </div>
+            
+            <div class="curriculum-item">
+                <i class="fas fa-calculator curriculum-icon"></i>
+                <h3>Math & Science Exploration</h3>
+                <p>Hands-on activities introduce mathematical concepts and scientific thinking through exploration and discovery.</p>
+            </div>
+            
+            <div class="curriculum-item">
+                <i class="fas fa-music curriculum-icon"></i>
+                <h3>Creative Expression</h3>
+                <p>Art, music, and dramatic play activities encourage creativity and self-expression.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Enrollment Section -->
+    <section class="section enrollment-section">
+        <h2 class="section-title">Enrollment Process</h2>
+        
+        <div class="enrollment-steps">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Schedule a Tour</h3>
+                <p>Visit our center, meet our staff, and see our facilities in person. Tours are available Monday-Friday between 9:00 AM and 4:00 PM.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Submit Application</h3>
+                <p>Complete our enrollment application form and provide necessary documents (birth certificate, immunization records).</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Enrollment Meeting</h3>
+                <p>Meet with our director to discuss your child's needs, our programs, and answer any questions you may have.</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Orientation & Start</h3>
+                <p>Attend our orientation session and schedule a phased start to help your child adjust to their new environment.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="section testimonials-section">
+        <h2 class="section-title">Parent Experiences</h2>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah M." class="testimonial-avatar">
+                    <div>
+                        <h3>Sarah M.</h3>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "The infant program gave me such peace of mind returning to work. The caregivers are attentive and loving, and I receive daily updates about my baby's day."
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="David K." class="testimonial-avatar">
+                    <div>
+                        <h3>David K.</h3>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "My son's language exploded after joining the toddler program. The teachers are amazing at creating engaging activities that make learning fun."
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-header">
+                    <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Priya T." class="testimonial-avatar">
+                    <div>
+                        <h3>Priya T.</h3>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-text">
+                    "The aftercare program has been a lifesaver for our family. My daughter gets her homework done and has time to play with friends in a safe environment."
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Join Our Tiny Feet Family?</h2>
+        <p>Schedule a tour today and discover how our programs can benefit your child's development and learning journey.</p>
+        <button class="cta-button">Schedule a Tour</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="animation-element" style="width: 150px; height: 150px; bottom: 10%; left: 5%;"></div>
+        <div class="animation-element" style="width: 100px; height: 100px; top: 20%; right: 10%;"></div>
+        
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Tiny Feet ECD & Aftercare</h3>
+                <p>Providing quality early childhood development and aftercare services in Kibler Park since 2010.</p>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-map-marker-alt"></i> 54 Gordon Rd, Kibler Park</li>
+                    <li><i class="fas fa-phone"></i> 064 509 0481</li>
+                    <li><i class="fas fa-envelope"></i> info@tinyfeetecd.co.za</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 6am-6pm</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 Tiny Feet ECD and Aftercare. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('nav ul');
+        
+        mobileMenu.addEventListener('click', () => {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Program card hover effect enhancement
+        const programCards = document.querySelectorAll('.program-card');
+        
+        programCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-15px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
