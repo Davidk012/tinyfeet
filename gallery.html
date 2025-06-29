@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Tiny Feet ECD and Aftercare</title>
+    <meta name="description" content="Gallery of Tiny Feet ECD and Aftercare in Kibler Park, Johannesburg South. See our facilities, activities, and happy children.">
+    <title>Gallery - Tiny Feet ECD and Aftercare | Kibler Park</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
@@ -27,6 +28,22 @@
             color: var(--secondary);
             line-height: 1.6;
             overflow-x: hidden;
+        }
+
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            z-index: 9999;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
         }
 
         /* Header Styles */
@@ -103,6 +120,9 @@
             font-size: 1.8rem;
             color: white;
             cursor: pointer;
+            background: transparent;
+            border: none;
+            padding: 5px;
         }
 
         /* Hero Section */
@@ -601,6 +621,19 @@
         @media (max-width: 768px) {
             nav ul {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            nav ul.active {
+                display: flex;
             }
             
             .mobile-menu {
@@ -661,7 +694,10 @@
     </style>
 </head>
 <body>
-    <!-- Fixed Header with proper accessibility attributes -->
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Fixed Header -->
     <header>
         <div class="logo">
             <i class="fas fa-child logo-icon" aria-hidden="true"></i>
@@ -788,7 +824,6 @@
                     </div>
                 </div>
             </div>
-            </div>
         </section>
         
         <!-- Photo Grid Section -->
@@ -913,9 +948,9 @@
                 <h3>Tiny Feet ECD & Aftercare</h3>
                 <p>Providing quality early childhood development and aftercare services in Kibler Park since 2010.</p>
                 <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             
@@ -942,12 +977,12 @@
         </div>
         
         <div class="copyright">
-            <p>&copy; 2025 Tiny Feet ECD and Aftercare. All Rights Reserved|Developed by Profile Perfect Productions</p>
+            <p>&copy; 2025 Tiny Feet ECD and Aftercare. All Rights Reserved. | Developed by Profile Perfect Productions</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu functionality (fixed)
+        // Mobile menu functionality
         const mobileMenu = document.querySelector('.mobile-menu');
         const navMenu = document.getElementById('nav-menu');
         
