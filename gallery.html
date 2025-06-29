@@ -661,28 +661,28 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Fixed Header with proper accessibility attributes -->
     <header>
         <div class="logo">
-            <i class="fas fa-child logo-icon"></i>
+            <i class="fas fa-child logo-icon" aria-hidden="true"></i>
             <h1 class="logo-text">Tiny <span>Feet</span></h1>
         </div>
-        <nav>
-            <ul>
+        <nav role="navigation">
+            <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="programs.html">Programs</a></li>
-                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="gallery.html" class="active" aria-current="page">Gallery</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
+            <button class="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="gallery-hero">
+    <section class="gallery-hero" role="banner">
         <div class="animation-element" style="width: 100px; height: 100px; top: 10%; left: 5%;"></div>
         <div class="animation-element" style="width: 80px; height: 80px; top: 70%; left: 85%;"></div>
         
@@ -692,217 +692,219 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="section">
-        <h2 class="section-title">Photo Gallery</h2>
-        
-        <div class="gallery-nav">
-            <button class="gallery-btn active" data-filter="all">All</button>
-            <button class="gallery-btn" data-filter="classrooms">Classrooms</button>
-            <button class="gallery-btn" data-filter="playground">Playground</button>
-            <button class="gallery-btn" data-filter="activities">Activities</button>
-            <button class="gallery-btn" data-filter="events">Events</button>
-        </div>
-        
-        <div class="gallery-grid">
-            <div class="gallery-item" data-category="classrooms">
-                <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bright classroom">
-                <div class="gallery-category">Classrooms</div>
-                <div class="gallery-overlay">
-                    <h3>Infant Classroom</h3>
-                    <p>Our cozy space for our youngest learners</p>
-                </div>
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Gallery Section -->
+        <section class="section" aria-labelledby="gallery-heading">
+            <h2 class="section-title" id="gallery-heading">Photo Gallery</h2>
+            
+            <div class="gallery-nav" role="tablist">
+                <button class="gallery-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+                <button class="gallery-btn" data-filter="classrooms" role="tab" aria-selected="false">Classrooms</button>
+                <button class="gallery-btn" data-filter="playground" role="tab" aria-selected="false">Playground</button>
+                <button class="gallery-btn" data-filter="activities" role="tab" aria-selected="false">Activities</button>
+                <button class="gallery-btn" data-filter="events" role="tab" aria-selected="false">Events</button>
             </div>
             
-            <div class="gallery-item" data-category="playground">
-                <img src="https://images.unsplash.com/photo-1542623024-a797a755b8d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Playground">
-                <div class="gallery-category">Playground</div>
-                <div class="gallery-overlay">
-                    <h3>Outdoor Play Area</h3>
-                    <p>Children enjoying our safe playground</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="activities">
-                <img src="https://images.unsplash.com/photo-1544830797-9d9640d17f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art activity">
-                <div class="gallery-category">Activities</div>
-                <div class="gallery-overlay">
-                    <h3>Creative Art Session</h3>
-                    <p>Exploring colors and textures</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="classrooms">
-                <img src="https://images.unsplash.com/photo-1617590004475-0f8c5d30c0d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reading corner">
-                <div class="gallery-category">Classrooms</div>
-                <div class="gallery-overlay">
-                    <h3>Reading Corner</h3>
-                    <p>Storytime in our cozy reading nook</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="events">
-                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Birthday celebration">
-                <div class="gallery-category">Events</div>
-                <div class="gallery-overlay">
-                    <h3>Birthday Celebration</h3>
-                    <p>Celebrating special moments together</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="activities">
-                <img src="https://images.unsplash.com/photo-1625405679967-4b5c0d0b1b8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science experiment">
-                <div class="gallery-category">Activities</div>
-                <div class="gallery-overlay">
-                    <h3>Science Exploration</h3>
-                    <p>Hands-on learning with fun experiments</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="playground">
-                <img src="https://images.unsplash.com/photo-1551934260-7de8d827d345?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water play">
-                <div class="gallery-category">Playground</div>
-                <div class="gallery-overlay">
-                    <h3>Water Play Day</h3>
-                    <p>Fun and refreshing outdoor activities</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="events">
-                <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d3d5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cultural event">
-                <div class="gallery-category">Events</div>
-                <div class="gallery-overlay">
-                    <h3>Cultural Day</h3>
-                    <p>Celebrating diversity and traditions</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="activities">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Music class">
-                <div class="gallery-category">Activities</div>
-                <div class="gallery-overlay">
-                    <h3>Music & Movement</h3>
-                    <p>Developing rhythm and coordination</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Photo Grid Section -->
-    <section class="section" style="background-color: var(--gray);">
-        <h2 class="section-title">Center Highlights</h2>
-        
-        <div class="photo-grid">
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1591955506264-3f5a6834570a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Learning center">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reading area">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Teacher with children">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Outdoor play">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art display">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celebration">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1625405679967-4b5c0d0b1b8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science activity">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1551934260-7de8d827d345?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water play">
-            </div>
-            <div class="photo-item">
-                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Music class">
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section class="section testimonials-section">
-        <h2 class="section-title">Parent Testimonials</h2>
-        
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah M." class="testimonial-avatar">
-                    <div>
-                        <h3>Sarah M.</h3>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="classrooms">
+                    <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bright classroom">
+                    <div class="gallery-category">Classrooms</div>
+                    <div class="gallery-overlay">
+                        <h3>Infant Classroom</h3>
+                        <p>Our cozy space for our youngest learners</p>
                     </div>
                 </div>
-                <div class="testimonial-text">
-                    Tiny Feet has been a blessing for our family. The caring staff and stimulating environment have helped my child thrive. I'm constantly amazed by the creative activities they plan!
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="David K." class="testimonial-avatar">
-                    <div>
-                        <h3>David K.</h3>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                
+                <div class="gallery-item" data-category="playground">
+                    <img src="https://images.unsplash.com/photo-1542623024-a797a755b8d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Playground">
+                    <div class="gallery-category">Playground</div>
+                    <div class="gallery-overlay">
+                        <h3>Outdoor Play Area</h3>
+                        <p>Children enjoying our safe playground</p>
                     </div>
                 </div>
-                <div class="testimonial-text">
-                    The aftercare program is fantastic! My son gets help with homework and has time to play with friends. The staff is attentive and truly cares about each child's development.
-                </div>
-            </div>
-            
-            <div class="testimonial-card">
-                <div class="testimonial-header">
-                    <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Priya T." class="testimonial-avatar">
-                    <div>
-                        <h3>Priya T.</h3>
-                        <div class="testimonial-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="https://images.unsplash.com/photo-1544830797-9d9640d17f1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art activity">
+                    <div class="gallery-category">Activities</div>
+                    <div class="gallery-overlay">
+                        <h3>Creative Art Session</h3>
+                        <p>Exploring colors and textures</p>
                     </div>
                 </div>
-                <div class="testimonial-text">
-                    As a working parent, I appreciate the flexible hours and nutritious meals provided. My daughter has learned so much and made wonderful friends. We couldn't be happier!
+                
+                <div class="gallery-item" data-category="classrooms">
+                    <img src="https://images.unsplash.com/photo-1617590004475-0f8c5d30c0d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reading corner">
+                    <div class="gallery-category">Classrooms</div>
+                    <div class="gallery-overlay">
+                        <h3>Reading Corner</h3>
+                        <p>Storytime in our cozy reading nook</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Birthday celebration">
+                    <div class="gallery-category">Events</div>
+                    <div class="gallery-overlay">
+                        <h3>Birthday Celebration</h3>
+                        <p>Celebrating special moments together</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="https://images.unsplash.com/photo-1625405679967-4b5c0d0b1b8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science experiment">
+                    <div class="gallery-category">Activities</div>
+                    <div class="gallery-overlay">
+                        <h3>Science Exploration</h3>
+                        <p>Hands-on learning with fun experiments</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="playground">
+                    <img src="https://images.unsplash.com/photo-1551934260-7de8d827d345?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water play">
+                    <div class="gallery-category">Playground</div>
+                    <div class="gallery-overlay">
+                        <h3>Water Play Day</h3>
+                        <p>Fun and refreshing outdoor activities</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="events">
+                    <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d3d5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cultural event">
+                    <div class="gallery-category">Events</div>
+                    <div class="gallery-overlay">
+                        <h3>Cultural Day</h3>
+                        <p>Celebrating diversity and traditions</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-category="activities">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Music class">
+                    <div class="gallery-category">Activities</div>
+                    <div class="gallery-overlay">
+                        <h3>Music & Movement</h3>
+                        <p>Developing rhythm and coordination</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            </div>
+        </section>
+        
+        <!-- Photo Grid Section -->
+        <section class="section" style="background-color: var(--gray);" aria-labelledby="highlights-heading">
+            <h2 class="section-title" id="highlights-heading">Center Highlights</h2>
+            <div class="photo-grid">
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1591955506264-3f5a6834570a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Learning center">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Reading area">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Teacher with children">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Outdoor play">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Art display">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Celebration">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1625405679967-4b5c0d0b1b8d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Science activity">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1551934260-7de8d827d345?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Water play">
+                </div>
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Music class">
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="section testimonials-section" aria-labelledby="testimonials-heading">
+            <h2 class="section-title" id="testimonials-heading">Parent Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah M." class="testimonial-avatar">
+                        <div>
+                            <h3>Sarah M.</h3>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        Tiny Feet has been a blessing for our family. The caring staff and stimulating environment have helped my child thrive. I'm constantly amazed by the creative activities they plan!
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="David K." class="testimonial-avatar">
+                        <div>
+                            <h3>David K.</h3>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        The aftercare program is fantastic! My son gets help with homework and has time to play with friends. The staff is attentive and truly cares about each child's development.
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Priya T." class="testimonial-avatar">
+                        <div>
+                            <h3>Priya T.</h3>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-text">
+                        As a working parent, I appreciate the flexible hours and nutritious meals provided. My daughter has learned so much and made wonderful friends. We couldn't be happier!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Lightbox -->
-    <div class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <div class="lightbox-nav lightbox-prev">
+    <div class="lightbox" role="dialog" aria-modal="true" aria-label="Image view">
+        <span class="lightbox-close" aria-label="Close">&times;</span>
+        <div class="lightbox-nav lightbox-prev" aria-label="Previous image">
             <i class="fas fa-chevron-left"></i>
         </div>
         <div class="lightbox-content">
             <img src="" alt="" class="lightbox-img">
         </div>
-        <div class="lightbox-nav lightbox-next">
+        <div class="lightbox-nav lightbox-next" aria-label="Next image">
             <i class="fas fa-chevron-right"></i>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="animation-element" style="width: 150px; height: 150px; bottom: 10%; left: 5%;"></div>
         <div class="animation-element" style="width: 100px; height: 100px; top: 20%; right: 10%;"></div>
         
@@ -945,16 +947,39 @@
     </footer>
 
     <script>
-        // Gallery Filtering
+        // Mobile menu functionality (fixed)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenu.addEventListener('click', () => {
+            const isExpanded = mobileMenu.getAttribute('aria-expanded') === 'true';
+            navMenu.classList.toggle('active');
+            mobileMenu.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !mobileMenu.contains(e.target) && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                mobileMenu.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Gallery filtering
         const filterBtns = document.querySelectorAll('.gallery-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
         
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
+                // Remove active class and aria-selected from all buttons
+                filterBtns.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-selected', 'false');
+                });
+                
+                // Add active class and aria-selected to clicked button
                 btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
                 
                 const filter = btn.getAttribute('data-filter');
                 
@@ -983,15 +1008,16 @@
             img.addEventListener('click', () => {
                 lightbox.style.display = 'block';
                 lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt; // Preserve alt text
                 currentImageIndex = index;
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                document.body.style.overflow = 'hidden';
             });
         });
         
         // Close lightbox
         lightboxClose.addEventListener('click', () => {
             lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Enable scrolling
+            document.body.style.overflow = 'auto';
         });
         
         // Close when clicking outside image
@@ -1007,12 +1033,14 @@
             e.stopPropagation();
             currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
             lightboxImg.src = galleryImages[currentImageIndex].src;
+            lightboxImg.alt = galleryImages[currentImageIndex].alt;
         });
         
         lightboxNext.addEventListener('click', (e) => {
             e.stopPropagation();
             currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
             lightboxImg.src = galleryImages[currentImageIndex].src;
+            lightboxImg.alt = galleryImages[currentImageIndex].alt;
         });
         
         // Keyboard navigation
@@ -1021,22 +1049,16 @@
                 if (e.key === 'ArrowLeft') {
                     currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
                     lightboxImg.src = galleryImages[currentImageIndex].src;
+                    lightboxImg.alt = galleryImages[currentImageIndex].alt;
                 } else if (e.key === 'ArrowRight') {
                     currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
                     lightboxImg.src = galleryImages[currentImageIndex].src;
+                    lightboxImg.alt = galleryImages[currentImageIndex].alt;
                 } else if (e.key === 'Escape') {
                     lightbox.style.display = 'none';
                     document.body.style.overflow = 'auto';
                 }
             }
-        });
-        
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navMenu = document.querySelector('nav ul');
-        
-        mobileMenu.addEventListener('click', () => {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
